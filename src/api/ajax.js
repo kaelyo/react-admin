@@ -9,7 +9,7 @@ import {message} from 'antd'
 
 const BASE = ''
 
-export default function ajax (url,data={},type='GET'){
+export default function ajax (url,data={},type='GET'){//形参概念值
 
     return new Promise((resolve, reject) => {
         let promise
