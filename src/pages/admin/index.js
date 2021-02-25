@@ -12,6 +12,7 @@ import Pie from "../charts/pie";
 import Product from "../product";
 import Role from "../role";
 import User from "../user";
+import NotFound from "../not-found/not-found";
 import PubSub from "pubsub-js";
 
 const {  Footer, Sider, Content } = Layout;
@@ -40,16 +41,19 @@ export default class Admin extends Component {
             // 自动跳转到登录(在render()中)
             return <Redirect to='/login'/>
         }
-        const {collapsed} = this.state
+        //const {collapsed} = this.state
         return (
-            <Layout style={{width:'100%',height:'100%'}}>
-                <Sider  trigger={null} collapsible   collapsedWidth='0' collapsed={collapsed}>
+            <Layout style={{width:'100%',minHeight:'100%'}}>
+                {/* trigger={null} collapsible   collapsedWidth='0' collapsed={collapsed} */}
+                <Sider  breakpoint="lg"
+      collapsedWidth="0">
                     <LeftNav/>
                 </Sider>
                 <Layout>
                     <Header></Header>
                     <Content style={{margin: 15, backgroundColor: '#fff'}}>
                         <Switch>
+                            <Redirect exact={true} from='/' to='/home'/>{/*exact  完全匹配*/}
                             <Route path='/home' component={Home}></Route>
                             <Route path='/category' component={Category}></Route>
                             <Route path='/product' component={Product}></Route>
@@ -58,7 +62,7 @@ export default class Admin extends Component {
                             <Route path='/charts/bar' component={Bar}></Route>
                             <Route path='/charts/line' component={Line}></Route>
                             <Route path='/charts/pie' component={Pie}></Route>
-                            <Redirect to='/home'/>
+                            <Route component={NotFound}/> {/* 上面没有一个匹配，直接显示*/}
                         </Switch>
                     </Content>
                     <Footer style={{textAlign: 'center', color: '#cccccc'}}>Footer</Footer>

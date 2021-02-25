@@ -27,7 +27,7 @@ export default class Category extends Component {
             },
             {
               title: '操作',
-              width:300,
+              width:'200',
               render:(category)=>(
                   <div>
                       <LinkButton onClick={()=>{this.showUpdate(category)}}>修改分类</LinkButton>

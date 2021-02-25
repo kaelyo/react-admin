@@ -7,7 +7,7 @@
 import axios from 'axios'
 import {message} from 'antd'
 
-const BASE = ''
+const BASE = '/api'
 
 export default function ajax (url,data={},type='GET'){//形参概念值
 
